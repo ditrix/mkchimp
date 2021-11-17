@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailchimpStatusesTable extends Migration
+class CreateMailchimpTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateMailchimpStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailchimp_statuses', function (Blueprint $table) {
+        Schema::create('mailchimp_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status')->nullable();            
-            $table->timestamps();
+            $table->string('tag')->nullable();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateMailchimpStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailchimp_statuses');
+        Schema::dropIfExists('mailchimp_tags');
     }
 }

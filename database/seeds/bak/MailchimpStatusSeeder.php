@@ -16,6 +16,5 @@ class MailchimpStatusSeeder extends Seeder
         DB::table('mailchimp_statuses')->insert(['status' => 'subscribed', 'created_at' => now(),'updated_at' => now()]);
         DB::table('mailchimp_statuses')->insert(['status' => 'unsubscribed', 'created_at' => now(),'updated_at' => now()]);
         DB::table('mailchimp_statuses')->insert(['status' => 'archived', 'created_at' => now(),'updated_at' => now()]);
-
     }
 }

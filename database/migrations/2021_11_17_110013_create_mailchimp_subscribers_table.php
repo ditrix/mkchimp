@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailchimpUsersListTable extends Migration
+class CreateMailchimpSubscribersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateMailchimpUsersListTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailchimp_users_list', function (Blueprint $table) {
+        Schema::create('mailchimp_subscribers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('status_id')->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('shop_id');
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('list_id')->unsigned();
-            $table->foreign('list_id')->references('id')->on('mailchimp_lists');            
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateMailchimpUsersListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailchimp_users_list');
+        Schema::dropIfExists('mailchimp_subscribers');
     }
 }

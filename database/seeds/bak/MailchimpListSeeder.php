@@ -11,8 +11,6 @@ class MailchimpListSeeder extends Seeder
      */
     public function run()
     {
-        //
-
         $shops = DB::table('shops')->get();
         if($shops == null)
             return;
@@ -20,10 +18,17 @@ class MailchimpListSeeder extends Seeder
           DB::table('mailchimp_lists')->insert([
                 'shop_id' => $shop->id,
                 'mailchimp_list_id' => 'undefined', 
-                'list_name' => 'subscribers', 
+                'default_tag' => $this->getDefaultTag($shop->id),
+                'list_name' => 'subscribers',
                 'created_at' => now(),
                 'updated_at' => now()
             ]);            
         }
     }
+
+    public function getDefaultTag($shop_id){ 
+        $shop = DB::table('shops')->where('id',$shop_id)->get()->first();
+        return $shop->prefix.'_DEFAULT';
+    }
+
 }

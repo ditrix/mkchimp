@@ -30,6 +30,8 @@ class HomeController extends Controller
 
 
 
+
+
 /*
 
         $res = Newsletter::createCampaign(
@@ -83,8 +85,10 @@ class HomeController extends Controller
     
 
 
-    public function send(Request $request){
-        return;
+    public function send(){
+        Newsletter::addTags(['Custmer'],'ditrix20064@gmail.com.com','subscribers');
+        //dd(Newsletter::getTags('dmvoloshin@yahoo.com','subscribers'));
+        return redirect()->back()->with('message','tag added');
     }
 
     public function createCampaign(Request $request){
