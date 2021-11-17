@@ -86,7 +86,7 @@ class HomeController extends Controller
 
 
     public function send(){
-        Newsletter::addTags(['Custmer'],'ditrix20064@gmail.com.com','subscribers');
+        Newsletter::addTags(['Custmer','Voloshin','просто тег'],'ditrix2021@meta.ua','subscribers');
         //dd(Newsletter::getTags('dmvoloshin@yahoo.com','subscribers'));
         return redirect()->back()->with('message','tag added');
     }

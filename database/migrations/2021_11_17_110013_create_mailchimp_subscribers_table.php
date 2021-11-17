@@ -16,8 +16,10 @@ class CreateMailchimpSubscribersTable extends Migration
         Schema::create('mailchimp_subscribers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('shop_id');
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('status')->default('subscribed');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
